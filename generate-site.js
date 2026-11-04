@@ -12,10 +12,11 @@ const authorsDir = path.join(distDir, 'authors');
 if (fs.existsSync(distDir)) {
   fs.rmSync(distDir, { recursive: true });
 }
-fs.mkdirSync(distDir);
-fs.mkdirSync(assetsDir);
-fs.mkdirSync(postsDir);
-fs.mkdirSync(authorsDir);
+// Added { recursive: true } to prevent EEXIST errors
+fs.mkdirSync(distDir, { recursive: true });
+fs.mkdirSync(assetsDir, { recursive: true });
+fs.mkdirSync(postsDir, { recursive: true });
+fs.mkdirSync(authorsDir, { recursive: true });
 
 // Helper: Escape HTML
 function escapeHtml(text) {
@@ -423,7 +424,7 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.mkdirSync(path.join(distDir, 'blog'));
+  fs.mkdirSync(path.join(distDir, 'blog'), { recursive: true });
   fs.writeFileSync(path.join(distDir, 'blog', 'index.html'), html);
   console.log('✓ Generated blog page');
 }
@@ -514,7 +515,7 @@ ${footer()}
     `;
 
     const postDir = path.join(postsDir, post.slug);
-    fs.mkdirSync(postDir);
+    fs.mkdirSync(postDir, { recursive: true });
     fs.writeFileSync(path.join(postDir, 'index.html'), html);
     console.log(`✓ Generated post: ${post.slug}`);
   });
@@ -583,7 +584,7 @@ ${footer()}
     `;
 
     const authorDir = path.join(authorsDir, author.id);
-    fs.mkdirSync(authorDir);
+    fs.mkdirSync(authorDir, { recursive: true });
     fs.writeFileSync(path.join(authorDir, 'index.html'), html);
     console.log(`✓ Generated author: ${author.id}`);
   });
@@ -618,7 +619,7 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.mkdirSync(path.join(distDir, 'authors'));
+  fs.mkdirSync(path.join(distDir, 'authors'), { recursive: true });
   fs.writeFileSync(path.join(distDir, 'authors', 'index.html'), html);
   console.log('✓ Generated authors page');
 }
@@ -672,7 +673,7 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.mkdirSync(path.join(distDir, 'about'));
+  fs.mkdirSync(path.join(distDir, 'about'), { recursive: true });
   fs.writeFileSync(path.join(distDir, 'about', 'index.html'), html);
   console.log('✓ Generated about page');
 }
@@ -755,7 +756,7 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.mkdirSync(path.join(distDir, 'contact'));
+  fs.mkdirSync(path.join(distDir, 'contact'), { recursive: true });
   fs.writeFileSync(path.join(distDir, 'contact', 'index.html'), html);
   console.log('✓ Generated contact page');
 }
@@ -798,7 +799,7 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.mkdirSync(path.join(distDir, 'privacy'));
+  fs.mkdirSync(path.join(distDir, 'privacy'), { recursive: true });
   fs.writeFileSync(path.join(distDir, 'privacy', 'index.html'), html);
   console.log('✓ Generated privacy page');
 }
@@ -841,7 +842,7 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.mkdirSync(path.join(distDir, 'terms'));
+  fs.mkdirSync(path.join(distDir, 'terms'), { recursive: true });
   fs.writeFileSync(path.join(distDir, 'terms', 'index.html'), html);
   console.log('✓ Generated terms page');
 }
@@ -890,7 +891,7 @@ function copyAssets() {
     console.log('✓ Copied assets');
   } else {
     console.log('⚠ Assets folder not found. Creating placeholder...');
-    fs.mkdirSync(assetsDir);
+    fs.mkdirSync(assetsDir, { recursive: true });
     fs.writeFileSync(path.join(assetsDir, 'style.css'), '/* Add your CSS here */');
     fs.writeFileSync(path.join(assetsDir, 'script.js'), '/* Add your JavaScript here */');
   }
