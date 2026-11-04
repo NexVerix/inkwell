@@ -192,9 +192,9 @@ function footer() {
           </div>
           <p class="text-sm text-stone-400 max-w-sm mb-4">${site.description}</p>
           <div class="flex gap-3">
-            <a href="#" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-600 flex items-center justify-center transition-colors font-bold">𝕏</a>
-            <a href="#" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-600 flex items-center justify-center transition-colors font-bold">in</a>
-            <a href="#" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-600 flex items-center justify-center transition-colors font-bold">ig</a>
+            <a href="https://x.com/nexverix_dev" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-600 flex items-center justify-center transition-colors font-bold">𝕏</a>
+            <a href="https://www.linkedin.com/in/mdazizdev/" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-600 flex items-center justify-center transition-colors font-bold">in</a>
+            <a href="https://nexverix-inkwell.vercel.app/" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-600 flex items-center justify-center transition-colors font-bold">I</a>
           </div>
         </div>
         <div>
@@ -216,8 +216,8 @@ function footer() {
         </div>
       </div>
       <div class="pt-8 border-t border-stone-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-stone-500">
-        <p>© ${year} ${site.name}. All rights reserved.</p>
-        <p>Made with care in ${site.location}</p>
+        <p>© 2026 NexVerix Studio. All rights reserved.</p>
+        <p>Made by Nexverix Studio</p>
       </div>
     </div>
   </footer>
