@@ -134,7 +134,7 @@ function htmlHead(page) {
   `;
 }
 
-// Template: Navbar
+// Template: Navbar (CLEAN URLS)
 function navbar() {
   return `
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-stone-950/80 backdrop-blur-md border-b border-stone-200/60 dark:border-stone-800/60 transition-all">
@@ -177,7 +177,7 @@ function navbar() {
   `;
 }
 
-// Template: Footer
+// Template: Footer (CLEAN URLS)
 function footer() {
   const year = new Date().getFullYear();
   return `
@@ -395,7 +395,7 @@ ${footer()}
   console.log('✓ Generated home page');
 }
 
-// Generate Blog Page
+// Generate Blog Page (CLEAN URL FOLDER)
 function generateBlogPage() {
   const page = {
     title: 'Blog',
@@ -423,7 +423,8 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.writeFileSync(path.join(distDir, 'blog.html'), html);
+  fs.mkdirSync(path.join(distDir, 'blog'));
+  fs.writeFileSync(path.join(distDir, 'blog', 'index.html'), html);
   console.log('✓ Generated blog page');
 }
 
@@ -588,7 +589,7 @@ ${footer()}
   });
 }
 
-// Generate Authors Listing Page
+// Generate Authors Listing Page (CLEAN URL FOLDER)
 function generateAuthorsPage() {
   const page = {
     title: 'Authors',
@@ -617,11 +618,12 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.writeFileSync(path.join(distDir, 'authors.html'), html);
+  fs.mkdirSync(path.join(distDir, 'authors'));
+  fs.writeFileSync(path.join(distDir, 'authors', 'index.html'), html);
   console.log('✓ Generated authors page');
 }
 
-// Generate About Page
+// Generate About Page (CLEAN URL FOLDER)
 function generateAboutPage() {
   const page = {
     title: 'About',
@@ -670,11 +672,12 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.writeFileSync(path.join(distDir, 'about.html'), html);
+  fs.mkdirSync(path.join(distDir, 'about'));
+  fs.writeFileSync(path.join(distDir, 'about', 'index.html'), html);
   console.log('✓ Generated about page');
 }
 
-// Generate Contact Page
+// Generate Contact Page (CLEAN URL FOLDER)
 function generateContactPage() {
   const page = {
     title: 'Contact',
@@ -718,7 +721,7 @@ ${navbar()}
         </div>
       </div>
 
-    <form action="https://formspree.io/f/xaeeabzd" method="POST" class="lg:col-span-3 p-8 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 space-y-5">
+      <form class="lg:col-span-3 p-8 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 space-y-5">
         <div class="grid sm:grid-cols-2 gap-5">
           <div>
             <label class="block text-sm font-medium mb-2">Name</label>
@@ -752,11 +755,98 @@ ${navbar()}
 ${footer()}
   `;
 
-  fs.writeFileSync(path.join(distDir, 'contact.html'), html);
+  fs.mkdirSync(path.join(distDir, 'contact'));
+  fs.writeFileSync(path.join(distDir, 'contact', 'index.html'), html);
   console.log('✓ Generated contact page');
 }
 
-// Generate 404 Page
+// Generate Privacy Policy Page (CLEAN URL FOLDER)
+function generatePrivacyPage() {
+  const page = {
+    title: 'Privacy Policy',
+    seoTitle: 'Privacy Policy',
+    metaDescription: 'Privacy policy for Inkwell blog.',
+    url: `${site.url}/privacy`,
+    image: site.defaultImage,
+    type: 'website'
+  };
+
+  const html = `
+${htmlHead(page)}
+${navbar()}
+<main class="pt-16">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 py-12 lg:py-20">
+    <a href="/" class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-brand-600 mb-8">← Back to home</a>
+    <h1 class="font-serif text-4xl lg:text-5xl font-bold mb-8">Privacy Policy</h1>
+    <p class="text-sm text-stone-500 mb-8">Last updated: November 2026</p>
+    
+    <div class="prose prose-stone dark:prose-invert max-w-none">
+      <h2>1. Information We Collect</h2>
+      <p>We collect information you provide directly to us, such as when you fill out our contact form or subscribe to our newsletter. This may include your name, email address, and message content.</p>
+      
+      <h2>2. How We Use Your Information</h2>
+      <p>We use the information we collect to respond to your inquiries, send you newsletters (if subscribed), and improve our website. We do not sell or share your personal information with third parties for marketing purposes.</p>
+      
+      <h2>3. Cookies</h2>
+      <p>Our website may use cookies to enhance your experience. You can choose to disable cookies through your browser settings, though this may affect how the site functions.</p>
+      
+      <h2>4. Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:${site.email}">${site.email}</a>.</p>
+    </div>
+  </div>
+</main>
+${footer()}
+  `;
+
+  fs.mkdirSync(path.join(distDir, 'privacy'));
+  fs.writeFileSync(path.join(distDir, 'privacy', 'index.html'), html);
+  console.log('✓ Generated privacy page');
+}
+
+// Generate Terms & Conditions Page (CLEAN URL FOLDER)
+function generateTermsPage() {
+  const page = {
+    title: 'Terms and Conditions',
+    seoTitle: 'Terms and Conditions',
+    metaDescription: 'Terms and conditions for using Inkwell blog.',
+    url: `${site.url}/terms`,
+    image: site.defaultImage,
+    type: 'website'
+  };
+
+  const html = `
+${htmlHead(page)}
+${navbar()}
+<main class="pt-16">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 py-12 lg:py-20">
+    <a href="/" class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-brand-600 mb-8">← Back to home</a>
+    <h1 class="font-serif text-4xl lg:text-5xl font-bold mb-8">Terms and Conditions</h1>
+    <p class="text-sm text-stone-500 mb-8">Last updated: November 2026</p>
+    
+    <div class="prose prose-stone dark:prose-invert max-w-none">
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
+      
+      <h2>2. Use License</h2>
+      <p>Permission is granted to temporarily download one copy of the materials on Inkwell's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
+      
+      <h2>3. Disclaimer</h2>
+      <p>The materials on Inkwell's website are provided on an 'as is' basis. Inkwell makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property.</p>
+      
+      <h2>4. Governing Law</h2>
+      <p>These terms and conditions are governed by and construed in accordance with the laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+    </div>
+  </div>
+</main>
+${footer()}
+  `;
+
+  fs.mkdirSync(path.join(distDir, 'terms'));
+  fs.writeFileSync(path.join(distDir, 'terms', 'index.html'), html);
+  console.log('✓ Generated terms page');
+}
+
+// Generate 404 Page (Kept as 404.html for Vercel standard)
 function generate404Page() {
   const page = {
     title: 'Page Not Found',
@@ -813,7 +903,9 @@ function generateSitemap() {
     { loc: `${site.url}/blog`, priority: '0.9', changefreq: 'daily' },
     { loc: `${site.url}/authors`, priority: '0.8', changefreq: 'weekly' },
     { loc: `${site.url}/about`, priority: '0.7', changefreq: 'monthly' },
-    { loc: `${site.url}/contact`, priority: '0.6', changefreq: 'monthly' }
+    { loc: `${site.url}/contact`, priority: '0.6', changefreq: 'monthly' },
+    { loc: `${site.url}/privacy`, priority: '0.5', changefreq: 'monthly' },
+    { loc: `${site.url}/terms`, priority: '0.5', changefreq: 'monthly' }
   ];
 
   posts.forEach(post => {
@@ -855,93 +947,6 @@ Sitemap: ${site.url}/sitemap.xml`;
   console.log('✓ Generated robots.txt');
 }
 
-
-// Generate Privacy Policy Page
-function generatePrivacyPage() {
-  const page = {
-    title: 'Privacy Policy',
-    seoTitle: 'Privacy Policy',
-    metaDescription: 'Privacy policy for Inkwell blog.',
-    url: `${site.url}/privacy`,
-    image: site.defaultImage,
-    type: 'website'
-  };
-
-  const html = `
-${htmlHead(page)}
-${navbar()}
-<main class="pt-16">
-  <div class="max-w-3xl mx-auto px-6 lg:px-8 py-12 lg:py-20">
-    <a href="/" class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-brand-600 mb-8">← Back to home</a>
-    <h1 class="font-serif text-4xl lg:text-5xl font-bold mb-8">Privacy Policy</h1>
-    <p class="text-sm text-stone-500 mb-8">Last updated: November 2026</p>
-    
-    <div class="prose prose-stone dark:prose-invert max-w-none">
-      <h2>1. Information We Collect</h2>
-      <p>We collect information you provide directly to us, such as when you fill out our contact form or subscribe to our newsletter. This may include your name, email address, and message content.</p>
-      
-      <h2>2. How We Use Your Information</h2>
-      <p>We use the information we collect to respond to your inquiries, send you newsletters (if subscribed), and improve our website. We do not sell or share your personal information with third parties for marketing purposes.</p>
-      
-      <h2>3. Cookies</h2>
-      <p>Our website may use cookies to enhance your experience. You can choose to disable cookies through your browser settings, though this may affect how the site functions.</p>
-      
-      <h2>4. Contact Us</h2>
-      <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:${site.email}">${site.email}</a>.</p>
-    </div>
-  </div>
-</main>
-${footer()}
-  `;
-
-  fs.writeFileSync(path.join(distDir, 'privacy.html'), html);
-  console.log('✓ Generated privacy page');
-}
-
-// Generate Terms & Conditions Page
-function generateTermsPage() {
-  const page = {
-    title: 'Terms and Conditions',
-    seoTitle: 'Terms and Conditions',
-    metaDescription: 'Terms and conditions for using Inkwell blog.',
-    url: `${site.url}/terms`,
-    image: site.defaultImage,
-    type: 'website'
-  };
-
-  const html = `
-${htmlHead(page)}
-${navbar()}
-<main class="pt-16">
-  <div class="max-w-3xl mx-auto px-6 lg:px-8 py-12 lg:py-20">
-    <a href="/" class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-brand-600 mb-8">← Back to home</a>
-    <h1 class="font-serif text-4xl lg:text-5xl font-bold mb-8">Terms and Conditions</h1>
-    <p class="text-sm text-stone-500 mb-8">Last updated: November 2026</p>
-    
-    <div class="prose prose-stone dark:prose-invert max-w-none">
-      <h2>1. Acceptance of Terms</h2>
-      <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
-      
-      <h2>2. Use License</h2>
-      <p>Permission is granted to temporarily download one copy of the materials on Inkwell's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
-      
-      <h2>3. Disclaimer</h2>
-      <p>The materials on Inkwell's website are provided on an 'as is' basis. Inkwell makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property.</p>
-      
-      <h2>4. Governing Law</h2>
-      <p>These terms and conditions are governed by and construed in accordance with the laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
-    </div>
-  </div>
-</main>
-${footer()}
-  `;
-
-  fs.writeFileSync(path.join(distDir, 'terms.html'), html);
-  console.log('✓ Generated terms page');
-}
-
-
-
 // Run all generators
 console.log('\n🚀 Generating static website...\n');
 generateHomePage();
@@ -951,10 +956,10 @@ generateAuthorsPage();
 generateAuthorPages();
 generateAboutPage();
 generateContactPage();
+generatePrivacyPage();
+generateTermsPage();
 generate404Page();
-generatePrivacyPage(); 
-generateTermsPage(); 
 copyAssets();
 generateSitemap();
 generateRobots();
-console.log('\n✅ Website generated successfully in /dist folder!\n');
+console.log('\n Website generated successfully in /dist folder!\n');
