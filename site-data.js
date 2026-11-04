@@ -1,7 +1,7 @@
 const site = {
   name: "Inkwell",
   tagline: "Stories, ideas & insights worth reading.",
-  url: "https://yourdomain.com",
+  url: "https://nexverix-inkwell.vercel.app",
   language: "en",
   description: "Inkwell is a thoughtful blog about technology, design, lifestyle, productivity, and practical digital tips.",
   email: "hello@inkwell.blog",
