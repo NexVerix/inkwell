@@ -232,5 +232,5 @@ Explore more projects:
 <p align="center">
   <strong> Inkwell — Write. Publish. Grow.</strong>
   <br>
-  Built with by NexVerix Studio.
+  Built by NexVerix Studio.
 </p>
